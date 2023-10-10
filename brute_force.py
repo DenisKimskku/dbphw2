@@ -25,6 +25,9 @@ def baseline(input_file):
     return skyline, not_skyline
 
 
+
+
+
 def pareto_optimal(input_file):
 
     with open(input_file, 'r') as f:
@@ -35,8 +38,14 @@ def pareto_optimal(input_file):
     not_skyline = []
     
     ############# EDIT HERE #############
+    #find pareto optimal points
+    #maximize quality and service, minimize price
+    #do not use brute force
+    #only choose the city 'Suwon'
 
     for id_a, city_a, quality_a, service_a, price_a in lines:
+        if(city_a != 'Suwon'):
+            continue
         dominated = False
         for id_b, city_b, quality_b, service_b, price_b in lines:
             if id_a == id_b:
@@ -46,6 +55,9 @@ def pareto_optimal(input_file):
             if (int(quality_a) <= int(quality_b) and int(service_a) <= int(service_b) and int(price_a) >= int(price_b)) and (int(quality_a) < int(quality_b) or int(service_a) < int(service_b) or int(price_a) > int(price_b)):
                 dominated = True
                 break
+
+
+
     ############# EDIT HERE #############
 
         if not dominated:
@@ -54,3 +66,6 @@ def pareto_optimal(input_file):
             not_skyline.append((id_a, city_a, quality_a, service_a, price_a))
     
     return skyline, not_skyline
+
+
+
