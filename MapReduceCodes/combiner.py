@@ -11,7 +11,7 @@ for line in sys.stdin:
 #combiner for mapper.py and reducer.py
 #sort by quality and service
 
-lines.sort(key=lambda x: (int(x[2]), int(x[3])))
+lines.sort(key=lambda x: (int(x[2]), int(x[3])), reverse=True)
 skyline = []
 
 for id_a, city_a, quality_a, service_a, price_a in lines:
